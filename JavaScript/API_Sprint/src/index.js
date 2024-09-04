@@ -17,9 +17,11 @@ class AppController {
   }
   //Define as rotas da nossa API
   routes() {
+    const routesAPI = require('./routes/routesAPI');
+    this.express.use('/senai-reservas/v1',routesAPI);
     //Define uma rota GET para o caminho health
     this.express.get("/health/", (req, res) => {
-      res.send({ nome: "Gabriela", idade: "17", cpf: "43254697880"});
+      res.status(200).send({messagem: "OK"});
     });//Essa rota é usada para verificar se a API estoa OK
   }
 }
