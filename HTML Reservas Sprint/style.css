@@ -1,0 +1,76 @@
+/*Estilos aplicados ao website Prototipando...*/
+
+/*Seletor Universal - seleciona todos os elementos da página e aplica estilos comuns padronizados*/
+* {
+    margin: 0; /*Remove a margem padrão de todos os elementos*/
+    padding: 0; /*Remove o padding de todos os elementos*/
+    box-sizing: border-box; /*Inclui bordas e preenchimentos no cálculo da largura e altura dos elementos*/
+  } /*Fechamento do seletot universal */
+  /*Remove o padding de todos os elementos*/
+  
+  body {
+    font-family: Arial, sans-serif; /*Define a fonte da página como Arial, com uma alternativa de sans-serif*/
+    background-color: #F86262; /*Define a cor de fundo do body / corpo de html */
+    color: rgb( 240,240,240); /*Define a cor do texto com um tom suave de branco */
+  } /*Fechamento do body*/
+  /*Estilo do cabeçalho*/
+  header {
+    padding: 40px;
+    text-align: center;
+    background-color: #C22929;
+  } /*Fechamento do header*/
+  /*Estilho do rodapé / footer */
+  footer {
+    padding: 10px 20px;
+    text-align: center;
+    background-color: #C22929;
+  } /*Fechamento do footer*/
+  
+  header button {
+    right: 20px; /*Alinha o botão à direita, com 20px de distância da borda direita da página*/
+    top: 20px; /*Alinha o botão ao topo com 20 px de distância da borda superior*/
+    position: absolute; /*Posiciona o botão de forma absoluta com relação ao cabeçalho*/
+    background-color: #3e44d3;
+    color: rgb( 240,240,240);
+    padding: 20px; /*Define o espaçao interno do botão em 10px (vertical) e 20px (horizontal)*/
+    border-radius: 5px; /*Arredonda os cantos do botão*/
+    border: none; /*Remove a borda padrão do botão*/
+    cursor: pointer; /*Define o cursor como um ponteiro ao passar sobre o botão*/
+  }/*Fechamento do header button*/
+  
+  header h3{
+    /*Remove a margem e o padding padrãodo h3 dentro do header*/
+    margin:0;
+    padding:0;
+  }/*Fechamento do header h3*/
+  
+  main{
+   padding:40px;
+   text-align: center;
+  }/*Fechamento do main*/
+
+  section h1{
+    position: absolute;
+    left: 20px;
+    font-size: 300%;
+    color: black;
+    text-align: left;
+  }
+  
+  main img{
+    max-width: 550px; /*Define a largura máxima das imagens dentro de main como 150px*/
+    position: absolute;
+    right: 20px;
+  }/*Fechamento main img*/
+  
+  section{
+    margin: 20px 0; /*Define a margem superior e inferior das seções como 20px e 0 para as laterais*/
+  }/*Fechamento section*/
+  
+  footer{
+    padding: 40px; /*Define o espaçao interno do botão em 10px (vertical) e 20px (horizontal)*/
+    text-align: center;
+    bottom: 0; /*Alinha o rodapé abaixo da página*/
+    position: absolute;/*Posiciona o rodapé de forma absoluta*/
+    width: 100%;
+  }
