@@ -62,11 +62,12 @@
   main img{
     max-width: 550px; /*Define a largura máxima das imagens dentro de main como 150px*/
     position: absolute;
-    right: 20px;
+    right: 60px;
     background-color: #acacac;
-    padding: 20px;
+    padding: 50px;
     border-radius: 10px;
     padding-bottom: 170px;
+    max-width: 300px; 
   }/*Fechamento main img*/
   
   section{
