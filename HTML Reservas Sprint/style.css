@@ -59,18 +59,27 @@
   }
   
   
-  main img{
-    max-width: 550px; /*Define a largura máxima das imagens dentro de main como 150px*/
+  section img{
+    background-color: #acacac;
     position: absolute;
     right: 60px;
-    background-color: #acacac;
     padding: 50px;
     border-radius: 10px;
     padding-bottom: 170px;
     max-width: 300px; 
   }/*Fechamento main img*/
+
+  form{
+    position: absolute;
+    right: 80px;
+    top: 280px;
+    color: black;
+  }
   
   section{
+    
+    width:100%;
+    height:70%;
     margin: 20px 0; /*Define a margem superior e inferior das seções como 20px e 0 para as laterais*/
   }/*Fechamento section*/
   
