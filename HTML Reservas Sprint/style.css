@@ -55,12 +55,18 @@
     font-size: 300%;
     color: black;
     text-align: left;
+  
   }
+  
   
   main img{
     max-width: 550px; /*Define a largura máxima das imagens dentro de main como 150px*/
     position: absolute;
     right: 20px;
+    background-color: #acacac;
+    padding: 20px;
+    border-radius: 10px;
+    padding-bottom: 170px;
   }/*Fechamento main img*/
   
   section{
