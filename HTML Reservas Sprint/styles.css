@@ -1,0 +1,27 @@
+/*Seletor Universal - seleciona todos os elementos da página e aplica estilos comuns padronizados*/
+* {
+    margin: 0; /*Remove a margem padrão de todos os elementos*/
+    padding: 0; /*Remove o padding de todos os elementos*/
+    box-sizing: border-box; /*Inclui bordas e preenchimentos no cálculo da largura e altura dos elementos*/
+  } /*Fechamento do seletot universal */
+  /*Remove o padding de todos os elementos*/
+  header {
+    padding: 40px;
+    text-align: center;
+    background-color: #C22929;
+    color: white;
+  } /*Fechamento do header*/
+  main{
+    background-color: #ffdcdc;
+  }
+
+  footer{
+    padding: 40px; /*Define o espaçao interno do botão em 10px (vertical) e 20px (horizontal)*/
+    text-align: center;
+    bottom: 0; /*Alinha o rodapé abaixo da página*/
+    position: absolute;/*Posiciona o rodapé de forma absoluta*/
+    width: 100%;
+    background-color: #C22929;
+    color: white;
+
+  }

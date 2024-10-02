@@ -10,7 +10,7 @@
   
   body {
     font-family: Arial, sans-serif; /*Define a fonte da página como Arial, com uma alternativa de sans-serif*/
-    background-color: #F86262; /*Define a cor de fundo do body / corpo de html */
+    background-color: #FFDCDC; /*Define a cor de fundo do body / corpo de html */
     color: rgb( 240,240,240); /*Define a cor do texto com um tom suave de branco */
   } /*Fechamento do body*/
   /*Estilo do cabeçalho*/
@@ -59,15 +59,19 @@
   }
   
   
+  
   section img{
-    background-color: #acacac;
-    position: absolute;
-    right: 60px;
+    background-color: #FD7C7C;
     padding: 50px;
     border-radius: 10px;
     padding-bottom: 170px;
     max-width: 300px; 
   }/*Fechamento main img*/
+  
+  .imagem{
+    display: flex;
+    align-items: center;
+  }
 
   form{
     position: absolute;
