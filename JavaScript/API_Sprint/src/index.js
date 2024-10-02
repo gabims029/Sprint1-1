@@ -1,5 +1,6 @@
 //Importa módulo express
 const express = require("express");
+const testConnect = require("./db/testConnect");
 
 //Defineuma classe para organizar a lógica da aplicação
 class AppController {
@@ -10,6 +11,7 @@ class AppController {
     this.middlewares();
     //Chama o método routes para definir as rotas da API
     this.routes();
+    testConnect();
   }
   middlewares() {
     //Permitir que a aplicação recaba dados em formato JSON nas requisições
