@@ -14,19 +14,19 @@ module.exports = class controllerUsuario {
     if (email !== emailc) {
       return res
         .status(400)
-        .json({ message: "Digite o mesmo email nos dois campos de email!" });
+        .json({ error: "Digite o mesmo email nos dois campos de email!" });
     }
 
     if (senha !== senhac) {
       return res
         .status(400)
-        .json({ message: "Digite a mesma senha nos dois campos de senha!" });
+        .json({ error: "Digite a mesma senha nos dois campos de senha!" });
     }
 
     if (!email.includes("@")) {
       return res
         .status(400)
-        .json({ message: "O email deve ter '@' no final." });
+        .json({ error: "O email deve ter '@' no final." });
     }
 
     const existeUsua = usuarios.find((user) => user.email === email);
@@ -41,7 +41,7 @@ module.exports = class controllerUsuario {
 
     return res
       .status(200)
-      .json({ message: "Seu cadastro foi executado com sucesso!" });
+      .json({ message: "Seu cadastro foi executado com sucesso!", user : newUser });
   }
 
   static async loginUsua(req, res) {
