@@ -1,7 +1,7 @@
 //Importa módulo express
 const express = require("express");
 const cors = require("cors");
-//const testConnect = require("./db/testConnect");
+const testConnect = require("./db/testConnect");
 
 //Define uma classe para organizar a lógica da aplicação
 class AppController {
@@ -12,7 +12,7 @@ class AppController {
     this.middlewares();
     //Chama o método routes para definir as rotas da API
     this.routes();
-    //testConnect();
+    testConnect();
   }
   middlewares() {
     //Permitir que a aplicação recaba dados em formato JSON nas requisições
@@ -22,7 +22,7 @@ class AppController {
   //Define as rotas da nossa API
   routes() {
     const routesAPI = require('./routes/routesAPI');
-    this.express.use('/senai-reservas/v1',routesAPI);
+    this.express.use('/reservas-senai/v1',routesAPI);
     //Define uma rota GET para o caminho health
     this.express.get("/health/", (req, res) => {
       res.status(200).send({messagem: "OK"});

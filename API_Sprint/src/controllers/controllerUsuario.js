@@ -1,11 +1,9 @@
-let usuarios = [];
-let id = 0;
-
+const connect = require("../db/connect");
 module.exports = class controllerUsuario {
   static async cadastraUsua(req, res) {
-    const { nome, email, emailc, senha, senhac } = req.body;
+    const { nomecompleto, email, emailc, senha, senhac } = req.body;
 
-    if (!nome || !email || !emailc || !senha || !senhac) {
+    if (!nomecompleto || !email || !emailc || !senha || !senhac) {
       return res
         .status(400)
         .json({ error: "Todos os campos devem ser preenchidos" });
@@ -29,90 +27,145 @@ module.exports = class controllerUsuario {
         .json({ error: "O email deve ter '@' no final." });
     }
 
-    const existeUsua = usuarios.find((user) => user.email === email);
-    if (existeUsua) {
-      return res.status(400).json({ error: "Email já cadastrado." });
+    // Construção da query INSERT
+    const query = `INSERT INTO usuario(nomecompleto, email, senha) VALUES ('${nomecompleto}', '${email}', '${senha}');`;
+
+    // Executando a query INSERT
+    try {
+      connect.query(query, function (err) {
+        if (err) {
+          console.error(err);
+          console.error(err.code);
+          if (err.code === "ER_DUP_ENTRY") {
+            return res
+              .status(400)
+              .json({ error: "O email já está vinculado a outro usuário" });
+          } else {
+            return res
+              .status(500)
+              .json({ error: "Erro Interno Do Servidor" });
+          }
+        } else {
+          return res
+            .status(201)
+            .json({ message: "Usuário criado com sucesso" });
+        }
+      });
+    } catch (error) {
+      console.error(error);
+      return res
+      .status(500)
+      .json({ error: "Erro interno do servidor" });
     }
-
-    id++;
-
-    const newUser = { id, nome, email, senha,};
-    usuarios.push(newUser);
-
-    return res
-      .status(200)
-      .json({ message: "Seu cadastro foi executado com sucesso!", user : newUser });
   }
 
   static async loginUsua(req, res) {
     const { email, senha } = req.body;
 
-    if (email !== usuarios["email"]) {
-      return res
-        .status(400)
-        .json({
-          message: "O email deve ser registrado. Tente fazer cadastro!",
-        });
-    }
-    if (senha !== usuarios["senha"]) {
-      return res
-        .status(400)
-        .json({
-          message: "A senha deve ser registrada. Tente fazer cadastro!",
-        });
-    }
+    const query = `SELECT * FROM usuario WHERE email = ? AND senha = ?`;
+    const values = [email, senha];
 
-    return res
-      .status(200)
-      .json({
-        message: "Login efetuado com sucesso. Redirecionando à tela inicial...",
+    try{
+      connect.query(query, values, function (err, results){
+        if(err){
+          console.error(err);
+          console.error(err.code);
+          return res
+              .status(500)
+              .json({ error: "Erro Interno Do Servidor" });
+        }
+        console.log(results);
+        if(results.length < 1){
+          return res.status(404).json({error:"Usuário Não Encontrado"});
+        }
+        return res.status(200).json({message:"Login Efetuado com Sucesso!"});
       });
+    }catch(error){
+      console.error(error);
+      return res
+      .status(500)
+      .json({ error: "Erro interno do servidor" });
+    }
   }
 
   static async mostraUsua(req, res) {
-    return res
-      .status(200)
-      .json({ message: "Mostrando todos os usuários:", usuarios });
+    const query = `SELECT * FROM usuario`;
+
+    try {
+      connect.query(query, function (err, results) {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ error: "Erro Interno do Servidor" });
+        }
+        return res
+          .status(200)
+          .json({
+            message: "Mostrando usuários: ",
+            users: results,
+          });
+      });
+    } catch (error) {
+      console.error("Erro ao executar a consulta:", error);
+      return res.status(500).json({ error: "Um erro foi encontrado." });
+    }
   }
 
   static async atualizaUsua(req, res) {
-    const { id, nome, email, senha } = req.body;
+    const { id, nomecompleto, email, senha } = req.body;
 
-    if (!id || !nome || !email || !senha) {
+    if (!id || !nomecompleto || !email || !senha) {
       return res
         .status(400)
         .json({ error: "Todos os campos devem ser preenchidos" });
     }
-    //Procurar o indice do usuario no Array 'usuarios' pelo email
-    const userIndex = usuarios.findIndex((user) => user.id === id);
-    //Se o usuario não for encontrado userIndex se torna -1
-    if (userIndex === -1) {
-      return res.status(400).json({ error: "Usuário não encontrado" });
+    const query = `UPDATE usuario SET nomecompleto=?, email=?, senha=? WHERE id_usuario = ?`;
+    const values = [nomecompleto, email, senha, id];
+    try {
+      connect.query(query, values, function (err, results) {
+        if (err) {
+          if (err.code === "ER_DUP_ENTRY") {
+            return res
+              .status(400)
+              .json({ error: "E-mail já cadastrado por outro usuário." });
+          } else {
+            console.error(err);
+            return res.status(500).json({ error: "Erro Interno do Servidor" });
+          }
+        }
+        if (results.affectedRows === 0) {
+          return res.status(404).json({ error: "Usuário não encontrado." });
+        }
+        return res
+          .status(200)
+          .json({ message: "Usuário atualizado com sucesso." });
+      });
+    } catch (error) {
+      console.error("Erro ao executar a consulta:", error);
+      return res.status(500).json({ error: "Erro Interno de Servidor" });
     }
-    usuarios[userIndex] = { id, nome, email, senha };
-    return res
-      .status(200)
-      .json({ message: "Usuário atualizado", user: usuarios[userIndex] });
   }
 
   static async removeUsua(req, res){
     //Obtem o parametro Id da requisição, que é o cpf do user a ser deletado
     const userId = req.params.id;
-
-    //Procurar o indice do usuario no Array 'usuarios' pelo parametro(cpf)
-    const userDeleted = usuarios.findIndex((user) => user.id == userId);
-    //Se o usuario não for encontrado userDeleted se torna -1
-    if (userDeleted === -1) {
-      return res
-        .status(400)
-        .json({ error: "Usuário não encontrado" });
+    const query = `DELETE FROM usuario WHERE id_usuario = ?`;
+    const values = [userId];
+    try {
+      connect.query(query, values, function (err, results) {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ error: "Erro Interno do Servidor" });
+        }
+        if (results.affectedRows === 0) {
+          return res.status(404).json({ error: "Usuário não encontrado." });
+        }
+        return res
+          .status(200)
+          .json({ message: "Usuário excluído com sucesso." });
+      });
+    } catch (error) {
+      console.error("Erro ao executar a consulta:", error);
+      return res.status(500).json({ error: "Erro Interno de Servidor" });
     }
-
-    //Removendo o usuario do Array 'usuarios'
-    usuarios.splice(userDeleted, 1);
-
-    return res
-        .status(200)
-        .json({message:"Usuário deletado com sucesso"});
   }
 };
