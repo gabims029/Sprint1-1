@@ -4,7 +4,9 @@ document
   // Seleciona o elemento com o id indicado (do formulário)
   .getElementById("formLogin")
   // Adiciona o ouvinte de evento (submit) para capturar o envio do formulário
-  .addEventListener("submit", function (event) {
+  .addEventListener("submit", loginUsua);
+  
+  function loginUsua (event) {
     // Previne o comportamento padrão do formulário, ou seja, impede que ele seja enviado e recarregue a página
     event.preventDefault();
     // Captura os valores dos campos do formulário
@@ -38,10 +40,12 @@ document
         // Executa a resposta de sucesso retorna ao usuario final
 
         //Exibe um alerta para o usuario final (front) com o nome do usuário que acabou de ser cadastrado
-        alert("Login executado com sucesso!");
+        alert(data.message);
 
         //Exibi um log no terminal para o desenvolvedor
-        console.log("Usuario logado");
+        console.log(data.message);
+
+        document.getElementById("formLogin").reset();
       })
       .catch((error) => {
         // Captura qualquer erro que ocorra durante o processo de requisição/resposta
@@ -51,4 +55,4 @@ document
 
         console.error("Erro:", error.message);
       });
-  });
+  };
