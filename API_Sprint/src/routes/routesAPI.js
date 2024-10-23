@@ -9,3 +9,4 @@ router.put("/user/", controllerUsuario.atualizaUsua);
 router.delete("/user/:id", controllerUsuario.removeUsua);
 
 module.exports = router;
+// Rota base em http://localhost:5000/reservas-senai/v1/
