@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index</title>
+    <title>Cadastro</title>
 
     <!--Incluindo o arquivo de estilização-->
     <link rel="stylesheet" href="style.css"/>
@@ -17,39 +17,38 @@
     <!--Tag semântica para organização do conteúdo do site-->
     <main>
       <!--Primeira seção do conteúdo-->
-      <section>
-        <!-- <h1>Faça Login ou<br>Cadastre-se para<br>ter acesso ao sistema:</h1> -->
-         <div>
-          <img
-          src="senaisplogo.png"
-          alt="Logo SENAI SP"
-        />    
+      <section>    
         <form id="formCad">
-          <h2>Cadastro</h2>
-          <label for="nomecompleto">Usuário:</label>
-          <input type="text" id="nomecompleto" name="nomecompleto" placeholder="nome completo"required/>
-          <br>
-          <label for="email">E-mail:</label>
-          <input type="email" id="email" name="email" placeholder="exemplo@gmail.com" required/>
-          <br>
-          <label for="emailc">Confirme E-mail:</label>
-          <input type="email" id="emailc" name="emailc" placeholder="exemplo@gmail.com" required/>
-          <br>
-          <label for="senha">Senha:</label>
-          <input type="password" id="senha" name="senha" maxlength="16" placeholder="•••••••" required/>
-          <br>
-          <label for="senhac">Confirme Senha:</label>
-          <input type="password" id="senhac" name="senhac" maxlength="16" placeholder="•••••••" required/>
-          <br>
-          <input type="submit" value="Cadastrar"/>
-          </form>
-        </div>
+          <div class="logoC">
+            <img src="senaisplogo.png" alt="Logo SENAI SP"/>
+          </div>
+
+          <setion class="cadastro">
+            <label for="nomecompleto">Usuário:</label>
+            <input type="text" id="nomecompleto" name="nomecompleto" placeholder="Nome completo"required/>
+            
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu email" required/>
+
+            <label for="emailc">Confirme E-mail:</label>
+            <input type="email" id="emailc" name="email" placeholder="Digite seu email" required/>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" maxlength="16" placeholder="Digite sua senha" required/>
+            
+            <label for="senhac">Confirme Senha:</label>
+            <input type="password" id="senhac" name="senhac" maxlength="16" placeholder="Confirme sua senha" required/>
+
+            <div  class="buttonL">
+              <input  type="submit" value="Cadastrar"/>
+            </div>
+        </form>          
       </section>
     </main>
 
     <footer>
       <p>Desenvolvido por: Leonardo P., João Pedro V., Gabriela Melo </p>
     </footer>
-    <script src="appCad.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
