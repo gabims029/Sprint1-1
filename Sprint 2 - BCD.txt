@@ -3,14 +3,14 @@ USE reservasenai;
 
 CREATE TABLE usuario( 
     id_usuario INT AUTO_INCREMENT primary key,
-    nome_completo VARCHAR(50) NOT NULL,
+    nomecompleto VARCHAR(50) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(16) NOT NULL
 );
 
 CREATE TABLE sala (
     id_sala INT AUTO_INCREMENT PRIMARY KEY,
-    nome_sala VARCHAR(30) NOT NULL,
+    nomesala VARCHAR(30) NOT NULL,
     descricao VARCHAR(255) NOT NULL,
     bloco CHAR(5) NOT NULL,
     categoria VARCHAR(30) NOT NULL,
