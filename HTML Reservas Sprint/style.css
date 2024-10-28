@@ -155,7 +155,7 @@ footer {
   padding: 20px;
   text-align: center;
   background-color: #d90000;
-  color: rgb(240,240,240);
+  color: rgb( 240 , 240 , 240 );
   bottom: 0; /*Alinha o rodapé abaixo da página*/
   position: absolute; /*Posiciona o rodapé de forma absoluta*/
   width: 100%;

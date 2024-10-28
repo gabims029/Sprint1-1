@@ -2,10 +2,10 @@ CREATE DATABASE reservasenai;
 USE reservasenai;
 
 CREATE TABLE usuario( 
-    id_usuario int auto_increment primary key,
-    nome_completo varchar(50) NOT NULL,
-    email varchar(255) NOT NULL UNIQUE,
-    senha varchar(16) NOT NULL
+    id_usuario INT AUTO_INCREMENT primary key,
+    nome_completo VARCHAR(50) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(16) NOT NULL
 );
 
 CREATE TABLE sala (
