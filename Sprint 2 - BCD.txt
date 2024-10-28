@@ -9,7 +9,7 @@ CREATE TABLE usuario(
 );
 
 CREATE TABLE sala (
-    id_sala INT PRIMARY KEY,
+    id_sala INT AUTO_INCREMENT PRIMARY KEY,
     nome_sala VARCHAR(30) NOT NULL,
     descricao VARCHAR(255) NOT NULL,
     bloco CHAR(5) NOT NULL,
