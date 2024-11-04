@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function(){
         // Executa a resposta de sucesso retorna ao usuario final
 
         //Exibe um alerta para o usuario final (front) com o nome do usuário que acabou de ser cadastrado
-        alert("Login bem sucessido")
+        alert("Login bem sucedido")
 
         //Exibi um log no terminal para o desenvolvedor
 
