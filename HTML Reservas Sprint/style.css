@@ -8,6 +8,10 @@
 } /*Fechamento do seletot universal */
 /*Remove o padding de todos os elementos*/
 
+html{
+  height: 100%;
+}
+
 body {
   font-family: Arial, sans-serif; /*Define a fonte da página como Arial, com uma alternativa de sans-serif*/
   background-color: #ffdcdc; /*Define a cor de fundo do body / corpo de html */
@@ -16,6 +20,7 @@ body {
     240,
     240
   ); /*Define a cor do texto com um tom suave de branco */
+  height: 100%;
 } /*Fechamento do body*/
 
 /*Estilo do cabeçalho*/
@@ -44,14 +49,15 @@ header h3 {
   /*Remove a margem e o padding padrãodo h3 dentro do header*/
   margin: 0;
   padding: 0;
-  position:absolute;
-  left:46%
+  position: absolute;
+  left: 46%;
 } /*Fechamento do header h3*/
 
 main {
   display: flex;
   justify-content: center;
   align-items: center;
+  height:100%
 } /*Fechamento do main*/
 
 #formLogin {
@@ -64,10 +70,10 @@ main {
   align-items: center;
   flex-direction: column;
   margin-top: 20px;
-  border: solid 1px #900B09;
+  border: solid 1px #900b09;
 }
 
-#formCad{
+#formCad {
   background-color: #fd7c7c;
   border-radius: 10px;
   width: 420px;
@@ -77,7 +83,7 @@ main {
   align-items: center;
   flex-direction: column;
   margin-top: 20px;
-  border: solid 1px #900B09;
+  border: solid 1px #900b09;
 }
 
 .logoL img {
@@ -85,53 +91,53 @@ main {
   border-color: #a80805;
   margin-bottom: 25px;
   border-radius: 5px;
-} 
+}
 
 .logoC img {
   max-width: 220px;
   border-color: #a80805;
   border-radius: 5px;
-} 
+}
 
-.login label{
+.login label {
   display: flex;
   flex-direction: left;
   margin-top: 10px;
-  flex:1;
+  flex: 1;
   color: rgb(11, 11, 11);
 }
 
-.cadastro label{
+.cadastro label {
   display: flex;
   flex-direction: left;
-  flex:1;
+  flex: 1;
   color: rgb(11, 11, 11);
 }
 
-.login input{
-  border: solid 1px #900B09;
+.login input {
+  border: solid 1px #900b09;
   width: 300px;
   padding: 10px;
   border-radius: 3px;
   margin-bottom: 15px;
 }
 
-.cadastro input{
-  border: solid 1px #900B09;
+.cadastro input {
+  border: solid 1px #900b09;
   width: 300px;
   padding: 10px;
   border-radius: 3px;
   margin-bottom: 2px;
 }
 
-.link a{
-  color: #A80805
+.link a {
+  color: #a80805;
 }
 
 .buttonL input {
   width: 300px;
   padding: 10px;
-  background-color: #A80805;
+  background-color: #a80805;
   color: white;
   border: none;
   border-radius: 3px;
@@ -141,7 +147,7 @@ main {
 .buttonC input {
   width: 300px;
   padding: 10px;
-  background-color: #A80805;
+  background-color: #a80805;
   color: white;
   border: none;
   border-radius: 3px;
@@ -151,15 +157,48 @@ footer {
   padding: 20px;
   text-align: center;
   background-color: #d90000;
-  color: rgb( 240 , 240 , 240 );
+  color: rgb(240, 240, 240);
   bottom: 0; /*Alinha o rodapé abaixo da página*/
   position: absolute; /*Posiciona o rodapé de forma absoluta*/
   width: 100%;
 } /*Fechamento do footer*/
 
+#conteudo {
+  background-color: blue;
+  width: 70%;
+  float: right;
+  text-align: center;
+  color: black;
+}
+#menu {
+  width: 30%;
+  height:100%;
+  margin: 0;
+  padding: 0;
+  float: left;
+  border-radius: 12px;
+  background: #F7F0F0;
+}
+
+#menu ul li {
+  margin: 0;
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  list-style-type: none;
+  height: 44px;
+}
+
+#menu a {
+  color: black;
+  text-decoration: none;
+  padding: 8px;
+}
 
 
-
-
-
-
+#finalizar a{
+  color: #ea0000;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 12px;
+}
