@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const controllerUsuario = require("../controllers/controllerUsuario.js");
-const controllerSala = require("../controllers/controlerSala.js");
+const controllerSala = require("../controllers/controllerSala.js");
 
 router.post("/user/cadastro", controllerUsuario.cadastraUsua);
 router.post("/user/login", controllerUsuario.loginUsua);

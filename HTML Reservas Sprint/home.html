@@ -11,34 +11,38 @@
   <body>
     <!--Tag semântica de cabeçalho-->
     <header>
-        <h3>Página Inicial</h3>
-        <button onclick="window.location.href='index.html'">Login</button>
+      <h3>Página Inicial</h3>
+      <button onclick="window.location.href='index.html'">Login</button>
     </header>
 
     <!--Tag semântica para organização do conteúdo do site-->
     <main>
       <div id="menu">
         <ul>
-          <li><a href="https://www.google.com.br/?hl=pt-BR">Cadastro/Login</a></li>
+          <li><a href="index.html">Cadastro/Login</a></li>
           <li><a href="https://www.google.com.br/?hl=pt-BR">Calendário</a></li>
           <li><a href="https://www.google.com.br/?hl=pt-BR">Pesquisa</a></li>
           <li><a href="https://www.google.com.br/?hl=pt-BR">Reservas</a></li>
-          <li><a href="https://www.google.com.br/?hl=pt-BR">Configurações</a></li>
-          <li id="finalizar"><a href="https://www.google.com.br/?hl=pt-BR">Finalizar Sessão</a></li>
+          <li>
+            <a href="https://www.google.com.br/?hl=pt-BR">Configurações</a>
+          </li>
+          <li id="finalizar">
+            <a href="https://www.google.com.br/?hl=pt-BR">Finalizar Sessão</a>
+          </li>
         </ul>
       </div>
       <div id="conteudo">
-        De acordo com todas as leis conhecidas da aviação, não há como uma
-          abelha voar. Suas asas são muito pequenas para tirar seu corpinho
-          gordo do chão. A abelha, é claro, voa de qualquer maneira porque as
-          abelhas não se importam com o que os humanos acham que é impossível.
-          Amarelo, preto. Amarelo, preto. Amarelo, preto. Amarelo, preto. Oh,
-          preto e amarelo!
+        <section>
+          <h1>Bem Vindos!</h1>
+          <h3>Lista de Salas:</h3>
+          <ul id="listSalas"></ul>
+        </section>
       </div>
     </main>
 
     <footer id="foothome">
       <p>Desenvolvido por: Leonardo P., João Pedro V., Gabriela Melo</p>
     </footer>
+    <script src="appSala.js"></script>
   </body>
 </html>
