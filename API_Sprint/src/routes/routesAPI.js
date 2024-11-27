@@ -17,9 +17,9 @@ router.put("/sala", controllerSala.atualizaSala);
 router.delete("/sala/:id", controllerSala.removeSala);
 
 router.post("/reserva", controllerReserva.cadastraReserva);
-router.get("/reserva", controllerReserva.mostraReservas);
+router.get("/reserva", controllerReserva.mostraReserva);
 router.put("/reserva", controllerReserva.atualizaReserva);
-router.delete("/reserva", controllerReserva.removeReserva);
+router.delete("/reserva/:id", controllerReserva.deleteReserva);
 
 
 module.exports = router;
