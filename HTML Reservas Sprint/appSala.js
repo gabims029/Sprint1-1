@@ -30,7 +30,7 @@ function getAllSalas() {
             reservaButt.onclick = function() {
               window.location.href = "index.html";
             };
-            salalist.appendChild(reservaButt)
+            listItem.appendChild(reservaButt)
           })
         })
         .catch((error) =>{

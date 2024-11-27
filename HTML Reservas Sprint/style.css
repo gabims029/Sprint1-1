@@ -159,16 +159,17 @@ footer {
   background-color: #d90000;
   color: rgb(240, 240, 240);
   bottom: 0; /*Alinha o rodapé abaixo da página*/
-  position: absolute; /*Posiciona o rodapé de forma absoluta*/
+  position: fixed; /*Posiciona o rodapé de forma absoluta*/
   width: 100%;
   height: 10%;
 } /*Fechamento do footer*/
 
 #conteudo {
+
   padding: 10px;
   height: 100%;
   width: 70%;
-  float: right;
+  right: 0;
   text-align: center;
   color: black;
 }
@@ -178,6 +179,7 @@ footer {
   margin: 0;
   padding: 0;
   float: left;
+  left: 0;
   border-radius: 12px;
   background: #F7F0F0;
 }
@@ -206,11 +208,20 @@ footer {
   border-radius: 12px;
 }
 
+#listSalas {
+  display: flex;
+  flex-direction: column;
+}
+
+
 #listSalas li {
-  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
   padding: 5px;
   text-align: left;
+  border: solid #A80805 1px;
   list-style-type: none;
-  border: solid #A80805 2px;
+  border-radius: 6px;
   background-color: #FD7C7C;
 }
