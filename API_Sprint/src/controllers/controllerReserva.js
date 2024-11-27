@@ -1,31 +1,33 @@
 const connect = require("../db/connect");
-
 module.exports = class controllerReserva {
+  //Cadastrar Reserva
   static async cadastraReserva(req, res) {
-    const { data, horario_inicio, horario_fim, fk_id_sala, idUsuario } = req.body;
-
-    if (!data || !horario_inicio || !horario_fim || !fk_id_sala || !idUsuario) {
+    const { data, horario_inicio, horario_fim, fk_id_sala, id_usuario } =
+      req.body;
+    if (
+      !data ||
+      !horario_inicio ||
+      !horario_fim ||
+      !fk_id_sala ||
+      !id_usuario
+    ) {
       return res
         .status(400)
-        .json({ error: "Todos os campos devem ser preenchidos." });
+        .json({ error: "Todos os campos devem ser preenchidos" });
     }
-
     if (horario_inicio >= horario_fim) {
-      return res
-        .status(400)
-        .json({
-          error: "O horário de início deve ser menor que o horário de fim.",
-        });
+      return res.status(400).json({
+        error: "O horário de início deve ser menor que o horário de fim.",
+      });
     }
-
     // Validação para verificar conflitos de horário
-      const queryHorario = `SELECT horario_inicio, horario_fim FROM reserva WHERE fk_id_sala = ? and not ((?i < horario_inicio and ?f <= horario_inicio) or (?i >= horario_fim and ?f > horario_fim))`
+    const queryHorario = `SELECT horario_inicio, horario_fim FROM reserva WHERE fk_id_sala = ? and not ((?i < horario_inicio and ?f <= horario_inicio) or (?i >= horario_fim and ?f > horario_fim))`;
     const horarioValues = [
-        fk_id_sala,
-        horario_inicio,
-        horario_fim,
-        horario_inicio,
-        horario_fim
+      fk_id_sala,
+      horario_inicio,
+      horario_fim,
+      horario_inicio,
+      horario_fim,
     ];
 
     try {
@@ -42,7 +44,13 @@ module.exports = class controllerReserva {
 
         // Caso não haja conflito, insere a reserva
         const query = `INSERT INTO reserva (data, horario_inicio, horario_fim, fk_id_sala, idUsuario) VALUES (?, ?, ?, ?, ?)`;
-        const values = [data, horario_inicio, horario_fim, fk_id_sala, idUsuario];
+        const values = [
+          data,
+          horario_inicio,
+          horario_fim,
+          fk_id_sala,
+          idUsuario,
+        ];
 
         connect.query(query, values, function (err) {
           if (err) {
@@ -59,27 +67,25 @@ module.exports = class controllerReserva {
       return res.status(500).json({ error: "Erro Interno do Servidor" });
     }
   }
-
-  static async mostraReservas(req, res) {
-    const query = `SELECT * FROM reserva`;
-
+  //Mostrar reservas
+  static async mostraReserva(req, res) {
+    const query = `SELECT * from reservas`;
     try {
-      connect.query(query, function (err, results) {
+      connect.query(query, (err, results) => {
         if (err) {
-          console.error(err);
+          console.log(err);
           return res.status(500).json({ error: "Erro Interno do Servidor" });
         }
         return res.status(200).json({
-          message: "Listando reservas cadastradas:",
-          reservas: results,
+          messagem: "Reservas listadas com sucesso!!",
+          events: results,
         });
       });
     } catch (error) {
-      console.error("Erro ao executar a consulta:", error);
-      return res.status(500).json({ error: "Erro Interno do Servidor" });
+      console.log("Erro ao consultar a query: ", error);
+      return res.status(500).json({ arror: "Erro interno do servidor :(" });
     }
   }
-
   static async atualizaReserva(req, res) {
     const { id_reserva, data, horario_inicio, horario_fim, fk_id_sala, fk_id_usuario } =
       req.body;
@@ -128,7 +134,7 @@ module.exports = class controllerReserva {
         }
 
         // Caso não haja conflito, atualiza a reserva
-        const query = `UPDATE reserva SET data = ?, horario_inicio = ?, horario_fim = ?, fk_id_sala = ?, idUsuario = ? WHERE idReserva = ?`;
+        const query = `UPDATE reserva SET data = ?, horario_inicio = ?, horario_fim = ?, fk_id_sala = ?, fk_id_usuario = ? WHERE id_reserva = ?`;
         const values = [
           data,
           horario_inicio,
@@ -156,30 +162,23 @@ module.exports = class controllerReserva {
       return res.status(500).json({ error: "Erro Interno do Servidor" });
     }
   }
-
-  static async removeReserva(req, res) {
-    const id_reserva = req.params.id;
-    const query = `DELETE FROM reserva WHERE id_reserva = ?`;
+  static async deleteReserva(req, res) {
+    const idReserva = req.params.id;
+    const query = `delete from reserva where id_reserva=?`;
 
     try {
-      connect.query(query, [id_reserva], function (err, results) {
+      connect.query(query, idReserva, (err, results) => {
         if (err) {
-          console.error(err);
-          return res
-            .status(500)
-            .json({ error: "Erro Interno do Servidor" });
+          console.log(err);
+          return res.status(500).json({ error: "Erro Interno do Servidor:" });
         }
         if (results.affectedRows === 0) {
-          return res.status(404).json({ error: "Reserva não encontrada." });
+          return res.status(404).json({ error: "Reserva não encontrada" });
         }
-        return res
-          .status(200)
-          .json({ message: "Reserva removida com sucesso." });
       });
     } catch (error) {
-      console.error("Erro ao executar a consulta:", error);
-      return res.status(500).json({ error: "Erro Interno do Servidor" });
+      console.log("Erro ao executar a consulta", error);
+      return res.status(500).json({ error: "Erro interno do servidor" });
     }
   }
-
 };

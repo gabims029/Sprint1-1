@@ -3,7 +3,7 @@ document
 
 
 function getAllSalas() {
-    fetch("http://10.89.240.69:3306/reservas-senai/v1/sala/", {
+    fetch("http://10.89.240.79:5000/reservas-senai/v1/sala/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -18,15 +18,18 @@ function getAllSalas() {
       });
     })
         .then((data) =>{
-          const salalist = document.getElementById("listSala")
-          salalist.innerHTML = "";
+          const salalist = document.getElementById("listSalas")
+          salalist.innerHTML = " ";
   
           data.salas.forEach((sala) =>{
             const listItem = document.createElement("li")
-            listItem.textContent = `Nome: ${sala.name}, CPF: ${sala.cpf}, Email: ${sala.email}`
+            listItem.textContent = `Nome: ${sala.nomesala}, Descrição: ${sala.descricao}, Categoria: ${sala.categoria}`
             salalist.appendChild(listItem)
             const reservaButt = document.createElement("button")
-            reservaButt.onclick = `window.location.href='index.html'`
+            reservaButt.textContent = `Reservar`
+            reservaButt.onclick = function() {
+              window.location.href = "index.html";
+            };
             salalist.appendChild(reservaButt)
           })
         })

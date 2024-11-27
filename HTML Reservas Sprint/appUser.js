@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function(){
       const senhac = document.getElementById("senhac").value;
 
       // Requisição HTTP para o endpoint de cadastro de usuário
-      fetch("http://localhost:5000/reservas-senai/v1/user/cadastro/", {
+      fetch("http://10.89.240.79:5000/reservas-senai/v1/user/cadastro/", {
         // Realiza uma chamada HTTP para o servidor (a rota definida)
         method: "POST",
         headers: {
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function(){
       const senha = document.getElementById("bSenha").value;
 
       // Requisição HTTP para o endpoint de cadastro de usuário
-      fetch("http://localhost:5000/reservas-senai/v1/user/login/", {
+      fetch("http://10.89.240.79:5000/reservas-senai/v1/user/login/", {
         // Realiza uma chamada HTTP para o servidor (a rota definida)
         method: "POST",
         headers: {
