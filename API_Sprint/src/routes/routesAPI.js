@@ -2,6 +2,8 @@ const router = require('express').Router();
 
 const controllerUsuario = require("../controllers/controllerUsuario.js");
 const controllerSala = require("../controllers/controllerSala.js");
+const controllerReserva = require('../controllers/controllerReserva.js');
+
 
 router.post("/user/cadastro", controllerUsuario.cadastraUsua);
 router.post("/user/login", controllerUsuario.loginUsua);
@@ -10,6 +12,14 @@ router.put("/user/", controllerUsuario.atualizaUsua);
 router.delete("/user/:id", controllerUsuario.removeUsua);
 
 router.post("/sala", controllerSala.cadastraSala);
+router.get("/sala", controllerSala.mostraSalas);
+router.put("/sala", controllerSala.atualizaSala);
+router.delete("/sala/:id", controllerSala.removeSala);
+
+router.post("/reserva", controllerReserva.cadastraReserva);
+router.get("/reserva", controllerReserva.mostraReservas);
+router.put("/reserva", controllerReserva.atualizaReserva);
+router.delete("/reserva", controllerReserva.removeReserva);
 
 
 module.exports = router;
