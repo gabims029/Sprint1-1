@@ -2,14 +2,14 @@ const connect = require("../db/connect");
 module.exports = class controllerReserva {
   //Cadastrar Reserva
   static async cadastraReserva(req, res) {
-    const { data, horario_inicio, horario_fim, fk_id_sala, id_usuario } =
+    const { data, horario_inicio, horario_fim, fk_id_sala, fk_id_usuario } =
       req.body;
     if (
       !data ||
       !horario_inicio ||
       !horario_fim ||
       !fk_id_sala ||
-      !id_usuario
+      !fk_id_usuario
     ) {
       return res
         .status(400)
@@ -43,13 +43,13 @@ module.exports = class controllerReserva {
         }
 
         // Caso não haja conflito, insere a reserva
-        const query = `INSERT INTO reserva (data, horario_inicio, horario_fim, fk_id_sala, idUsuario) VALUES (?, ?, ?, ?, ?)`;
+        const query = `INSERT INTO reserva (data, horario_inicio, horario_fim, fk_id_sala, fk_id_usuario) VALUES (?, ?, ?, ?, ?)`;
         const values = [
           data,
           horario_inicio,
           horario_fim,
           fk_id_sala,
-          idUsuario,
+          fk_id_usuario,
         ];
 
         connect.query(query, values, function (err) {
