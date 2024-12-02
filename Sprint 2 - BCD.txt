@@ -22,11 +22,10 @@ CREATE TABLE reserva_sala (
     data DATE NOT NULL,
     horario_inicio TIME NOT NULL,
     horario_fim TIME NOT NULL,
-    estado TINYINT NOT NULL,
     fk_id_sala INT NOT NULL,
     fk_id_usuario INT NOT NULL,
-    FOREIGN KEY (id_sala) REFERENCES sala(id_sala),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+    FOREIGN KEY (fk_id_sala) REFERENCES sala(id_sala),
+    FOREIGN KEY (fk_id_usuario) REFERENCES usuario(id_usuario)
 );
 
 

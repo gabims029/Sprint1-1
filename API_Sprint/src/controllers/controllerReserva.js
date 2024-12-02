@@ -21,7 +21,7 @@ module.exports = class controllerReserva {
       });
     }
     // Validação para verificar conflitos de horário
-    const queryHorario = `SELECT horario_inicio, horario_fim FROM reserva WHERE fk_id_sala = ? and not ((?i < horario_inicio and ?f <= horario_inicio) or (?i >= horario_fim and ?f > horario_fim))`;
+    const queryHorario = `SELECT horario_inicio, horario_fim FROM reserva_sala WHERE fk_id_sala = ? and not ((? < horario_inicio and ? <= horario_inicio) or (? >= horario_fim and ? > horario_fim))`;
     const horarioValues = [
       fk_id_sala,
       horario_inicio,
@@ -43,7 +43,7 @@ module.exports = class controllerReserva {
         }
 
         // Caso não haja conflito, insere a reserva
-        const query = `INSERT INTO reserva (data, horario_inicio, horario_fim, fk_id_sala, fk_id_usuario) VALUES (?, ?, ?, ?, ?)`;
+        const query = `INSERT INTO reserva_sala (data, horario_inicio, horario_fim, fk_id_sala, fk_id_usuario) VALUES (?, ?, ?, ?, ?)`;
         const values = [
           data,
           horario_inicio,
@@ -69,7 +69,7 @@ module.exports = class controllerReserva {
   }
   //Mostrar reservas
   static async mostraReserva(req, res) {
-    const query = `SELECT * from reservas`;
+    const query = `SELECT * from reserva_sala`;
     try {
       connect.query(query, (err, results) => {
         if (err) {
@@ -112,7 +112,7 @@ module.exports = class controllerReserva {
     }
 
     // Validação para verificar conflitos de horário ao atualizar
-    const queryHorario = `SELECT horario_inicio, horario_fim FROM reserva WHERE fk_id_sala = ? and not ((?i < horario_inicio and ?f <= horario_inicio) or (?i >= horario_fim and ?f > horario_fim))`
+    const queryHorario = `SELECT horario_inicio, horario_fim FROM reserva_sala WHERE fk_id_sala = ? and not ((? < horario_inicio and ? <= horario_inicio) or (? >= horario_fim and ? > horario_fim))`
     const horarioValues = [
         fk_id_sala,
         horario_inicio,
@@ -134,7 +134,7 @@ module.exports = class controllerReserva {
         }
 
         // Caso não haja conflito, atualiza a reserva
-        const query = `UPDATE reserva SET data = ?, horario_inicio = ?, horario_fim = ?, fk_id_sala = ?, fk_id_usuario = ? WHERE id_reserva = ?`;
+        const query = `UPDATE reserva_sala SET data = ?, horario_inicio = ?, horario_fim = ?, fk_id_sala = ?, fk_id_usuario = ? WHERE id_reserva = ?`;
         const values = [
           data,
           horario_inicio,
@@ -164,7 +164,7 @@ module.exports = class controllerReserva {
   }
   static async deleteReserva(req, res) {
     const idReserva = req.params.id;
-    const query = `delete from reserva where id_reserva=?`;
+    const query = `delete from reserva_sala where id_reserva=?`;
 
     try {
       connect.query(query, idReserva, (err, results) => {

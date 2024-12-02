@@ -1,6 +1,7 @@
 const connect = require("../db/connect");
 
 module.exports = class controllerSala {
+  //Cadastrar Sala
   static async cadastraSala(req, res) {
     const { nomesala, descricao, bloco, categoria, andar } = req.body;
 
